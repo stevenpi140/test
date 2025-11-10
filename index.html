@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>美國初選制度與傑利蠑螈互動模擬</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background-color: #fdfdfd;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 3px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .district-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+    .district-area {
+      text-align: center;
+      margin: 0 10px;
+    }
+    .district-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .pool, .district {
+      border: 2px dashed #aaa;
+      padding: 10px;
+      min-height: 150px;
+      background-color: #fafafa;
+    }
+    .pool {
+      width: 220px;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+    }
+    .district {
+      width: 180px;
+      height: 150px;
+    }
+    .square {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      display: inline-block;
+      cursor: move;
+    }
+    .red {
+      background-color: #ff8080;
+    }
+    .blue {
+      background-color: #8080ff;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .description {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>美國初選制度與傑利蠑螈互動模擬</h1>
+  <h2>初選制度介紹</h2>
+  <p>在美國政治中，<strong>初選制度</strong>（primary election）是政黨在總統大選前選出候選人的過程。美國兩大黨（民主黨與共和黨）各自舉行初選，每個州亦可決定採用何種初選方式，因而出現不同的類型。</p>
+  <h3>開放式初選 (open primary)</h3>
+  <p>開放式初選允許所有合格選民參與，無論其政黨黨派為何，選民可以自由選擇參與任何一黨的初選（亦可稱為跨黨投票）。這種制度提供更大參與度，有助增加投票率，但也可能造成「挑對手」（opportunistic voting）的現象，即某政黨支持者參與對手黨的初選，以影響對手候選人的出線。</p>
+  <h3>封閉式初選 (closed primary)</h3>
+  <p>封閉式初選只允許已登記為某政黨黨員的選民參與該黨的初選，登記其他黨派或無黨籍者不得參與。此制度可以鞏固政黨忠誠度與內部權力，確保黨員對本黨候選人的選擇，但參與度相對較低，且排除了無黨籍或其他黨派選民的意見。</p>
+  <h3>半開式初選 (semi-open primary)</h3>
+  <p>半開式初選介於開放式與封閉式之間。通常允許無黨派選民（無黨籍者）在初選日選擇參與任何一黨的初選，但已登記為某黨的選民仍必須投該黨的初選。這種方式部分放寬了限制，讓無黨籍者可以參與，但仍限制黨員跨黨投票。</p>
+  <h3>黨代表與超級代表 (delegates and superdelegates)</h3>
+  <p>初選結果並不直接產生當選人，而是按照各州初選的得票比例或規則分配黨代表（delegates）。這些黨代表代表選民意志，在政黨全國代表大會上投票選出正式候選人。大多數情況下，黨代表是依照初選結果分配的「承諾代表」（pledged delegates）。以民主黨為例，還存在一些不受初選結果約束的<em>超級代表</em>（superdelegates），通常為黨的高層官員或民選人士，他們可以自由支持任何候選人。超級代表的設計初衷在於讓資深黨員在沒有足夠黨代表數的情況下，對提名擁有影響力。</p>
+  <h3>贏者全拿與比例代表 (winner-takes-all &amp; proportional allocation)</h3>
+  <p>各州黨內初選可自行決定分配黨代表的方式。有些州採取<strong>贏者全拿</strong>（winner-takes-all）制度，即得票最多的候選人可拿下該州所有黨代表；而多數州採用<strong>比例代表制</strong>（proportional allocation），依照各候選人在該州初選中的得票比例分配黨代表。比例代表制常使得多名候選人都能獲得代表，延長競爭過程；贏者全拿則可能迅速確定領先者，但也會增加初選不平等的風險。</p>
+  <h3>前置化 (frontloading)</h3>
+  <p>前置化是指多個州將初選日程提前到選舉周期的早期，特別是二月到三月之間。這樣做是為了增加該州在提名過程中的影響力，希望在競爭激烈的早期階段就能決定領先者。然而過度前置化可能導致後期州份的選民無法影響初選結果，加速競爭者的淘汰。</p>
+  <h3>超級星期二 (Super Tuesday)</h3>
+  <p>「超級星期二」指的是通常在二月或三月的一個星期二，同一天有多個州同時舉行初選。例如2016年3月1日，14個州同時投票。超級星期二的結果往往造成初選巨大的動盪和決定性的勝負，許多候選人在此後可能選擇退出競選，因其成果對全國提名至關重要。</p>
+
+  <h2>傑利蠑螈 (Gerrymandering) 互動模擬</h2>
+  <p>下方互動示意兩種常見的傑利蠑螈操作方式：<strong>cracking</strong>（分裂不利選民）和 <strong>packing</strong>（集中不利選民）。紅色區塊代表執政黨選民，藍色區塊代表反對黨選民。你可以拖曳下面的區塊到兩個選區中，以觀察不同方式對選舉結果的影響。</p>
+
+  <h3>分裂 (Cracking)</h3>
+  <p>操作說明：嘗試將藍色區塊均勻地分散在兩個選區中（即「分裂」對手選民），使其在每個區都難以取得多數票。</p>
+  <div id="crack-pool" class="pool" ondragover="allowDrop(event)" ondrop="drop(event, 'crack')">
+    <!-- 初始選民方塊（紅/藍各6/4） -->
+    <div class="square red" draggable="true" id="crack-red-1" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="crack-red-2" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="crack-red-3" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="crack-red-4" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="crack-red-5" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="crack-red-6" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="crack-blue-1" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="crack-blue-2" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="crack-blue-3" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="crack-blue-4" ondragstart="drag(event)"></div>
+  </div>
+  <div class="district-container">
+    <div class="district-area">
+      <div class="district-title">區域 1</div>
+      <div class="district" id="crack-district1" ondragover="allowDrop(event)" ondrop="drop(event, 'crack')"></div>
+    </div>
+    <div class="district-area">
+      <div class="district-title">區域 2</div>
+      <div class="district" id="crack-district2" ondragover="allowDrop(event)" ondrop="drop(event, 'crack')"></div>
+    </div>
+  </div>
+  <p id="crack-result" class="result"></p>
+  <p class="description"><strong>分裂策略 (Cracking)：</strong> 將反對黨選民分散在多個選區，使其在每個選區都無法取得多數。如圖所示，如果藍色選民被分到兩區，紅色執政黨便能在兩區均取得多數，贏得更多席位。</p>
+
+  <h3>集中 (Packing)</h3>
+  <p>操作說明：嘗試將藍色區塊集中到同一個選區（即「集中」對手選民），使另一個選區的藍色選民很少，對手在其他區贏得較多席位。</p>
+  <div id="pack-pool" class="pool" ondragover="allowDrop(event)" ondrop="drop(event, 'pack')">
+    <!-- 初始選民方塊（紅/藍各6/4） -->
+    <div class="square red" draggable="true" id="pack-red-1" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="pack-red-2" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="pack-red-3" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="pack-red-4" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="pack-red-5" ondragstart="drag(event)"></div>
+    <div class="square red" draggable="true" id="pack-red-6" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="pack-blue-1" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="pack-blue-2" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="pack-blue-3" ondragstart="drag(event)"></div>
+    <div class="square blue" draggable="true" id="pack-blue-4" ondragstart="drag(event)"></div>
+  </div>
+  <div class="district-container">
+    <div class="district-area">
+      <div class="district-title">區域 1</div>
+      <div class="district" id="pack-district1" ondragover="allowDrop(event)" ondrop="drop(event, 'pack')"></div>
+    </div>
+    <div class="district-area">
+      <div class="district-title">區域 2</div>
+      <div class="district" id="pack-district2" ondragover="allowDrop(event)" ondrop="drop(event, 'pack')"></div>
+    </div>
+  </div>
+  <p id="pack-result" class="result"></p>
+  <p class="description"><strong>集中策略 (Packing)：</strong> 將反對黨選民集中在單一選區，使對手在其他選區中選票匱乏。如圖所示，如果大多數藍色選民集中在區域2，紅色執政黨可在區域1輕鬆勝出，對手僅贏得少數席位。</p>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+    function drop(ev, scenario) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      var dragged = document.getElementById(data);
+      ev.currentTarget.appendChild(dragged);
+      updateResult(scenario);
+    }
+    function updateResult(scenario) {
+      var d1 = document.getElementById(scenario + '-district1');
+      var d2 = document.getElementById(scenario + '-district2');
+      var r1 = d1.getElementsByClassName('red').length;
+      var b1 = d1.getElementsByClassName('blue').length;
+      var r2 = d2.getElementsByClassName('red').length;
+      var b2 = d2.getElementsByClassName('blue').length;
+      var redWins = 0, blueWins = 0;
+      if (r1 > b1) redWins++; else if (b1 > r1) blueWins++;
+      if (r2 > b2) redWins++; else if (b2 > r2) blueWins++;
+      var resultText = '結果：紅方獲得' + redWins + '席，藍方獲得' + blueWins + '席。';
+      document.getElementById(scenario + '-result').innerText = resultText;
+    }
+  </script>
+</body>
+</html>
